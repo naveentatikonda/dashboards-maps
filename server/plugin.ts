@@ -22,7 +22,7 @@ import {
 } from './types';
 import { createGeospatialCluster } from './clusters';
 import { GeospatialService, OpensearchService } from './services';
-import { geospatial, opensearch } from '../server/routes';
+import { geospatial, opensearch, initRoutes } from '../server/routes';
 import { mapSavedObjectsType } from './saved_objects';
 import { capabilitiesProvider } from './saved_objects/capabilities_provider';
 import { ConfigSchema } from '../common/config';
@@ -62,6 +62,7 @@ export class CustomImportMapPlugin
     // Register server side APIs
     geospatial(geospatialService, router);
     opensearch(opensearchService, router);
+    initRoutes(router, this.logger, config);
 
     // Register saved object types
     core.savedObjects.registerType(mapSavedObjectsType);

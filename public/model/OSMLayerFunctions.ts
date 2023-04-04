@@ -14,6 +14,15 @@ interface MaplibreRef {
   current: Maplibre | null;
 }
 
+// export interface ConflictErrorMsg {
+//   errorMsg: string | null;
+// }
+export let errorFlag = false;
+
+export const conflictError = (errorMsg: string | null) => {
+  return errorMsg;
+};
+
 // Fetch style layers from OpenSearch vector tile service
 const fetchStyleLayers = (url: string) => {
   return fetch(url)
@@ -22,6 +31,12 @@ const fetchStyleLayers = (url: string) => {
     .catch((error) => {
       // eslint-disable-next-line no-console
       console.log('error', error);
+      errorFlag = true;
+      // conflictError('OpenSearch Vector Tiles not avavilable in this region');
+      // const propsError: ConflictErrorMsg = {
+      //   errorMsg: 'OpenSearch Vector Tiles not avavilable in this region',
+      // };
+      // const conflictError = 'OpenSearch Vector Tiles not avavilable in this region';
     });
 };
 

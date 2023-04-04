@@ -38,6 +38,7 @@ import { TOOLTIP_STATE } from '../../../common';
 import { SpatialFilterToolbar } from '../toolbar/spatial_filter/filter_toolbar';
 import { DrawFilterShapeHelper } from '../toolbar/spatial_filter/display_draw_helper';
 import { ShapeFilter } from '../../../../../src/plugins/data/common';
+import { MapsMessages } from './maps_messages';
 
 interface MapContainerProps {
   setLayers: (layers: MapLayerSpecification[]) => void;
@@ -55,6 +56,7 @@ interface MapContainerProps {
   isUpdatingLayerRender: boolean;
   setIsUpdatingLayerRender: (isUpdatingLayerRender: boolean) => void;
   addSpatialFilter: (shape: ShapeFilter, label: string | null, relation: GeoShapeRelation) => void;
+  mapIdFromSavedObject: string;
 }
 
 export const MapContainer = ({
@@ -73,6 +75,7 @@ export const MapContainer = ({
   isUpdatingLayerRender,
   setIsUpdatingLayerRender,
   addSpatialFilter,
+  mapIdFromSavedObject,
 }: MapContainerProps) => {
   const { services } = useOpenSearchDashboards<MapServices>();
   const mapContainer = useRef(null);
@@ -236,6 +239,7 @@ export const MapContainer = ({
           onCancel={() => setFilterProperties({ mode: FILTER_DRAW_MODE.NONE })}
         />
       )}
+      {/*{mounted && <MapsFooter map={maplibreRef.current!} zoom={zoom} mapConfig={mapConfig} mapIdFromSavedObject={mapIdFromSavedObject}/>}*/}
       {mounted && (
         <LayerControlPanel
           maplibreRef={maplibreRef}
@@ -271,6 +275,7 @@ export const MapContainer = ({
           />
         )}
       </div>
+      <div className="maps-error-msg">{<MapsMessages />}</div>
       <div className="map-container" ref={mapContainer} />
     </div>
   );

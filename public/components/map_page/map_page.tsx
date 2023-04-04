@@ -163,6 +163,7 @@ export const MapComponent = ({
         isUpdatingLayerRender={isUpdatingLayerRender}
         setIsUpdatingLayerRender={setIsUpdatingLayerRender}
         addSpatialFilter={addSpatialFilter}
+        mapIdFromSavedObject={mapIdFromSavedObject}
       />
     </div>
   );
