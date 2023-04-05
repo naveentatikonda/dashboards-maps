@@ -27,7 +27,6 @@ export const MapsDashboardsApp = ({ mapConfig }: Props) => {
         <Switch>
           <Route
             path={[APP_PATH.CREATE_MAP, APP_PATH.EDIT_MAP]}
-            validate
             render={() => <MapPage mapConfig={mapConfig} />}
           />
           <Route exact path={APP_PATH.LANDING_PAGE_PATH} render={() => <MapsList />} />

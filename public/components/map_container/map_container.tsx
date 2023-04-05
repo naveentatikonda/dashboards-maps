@@ -190,7 +190,7 @@ export const MapContainer = ({
         }
       } else {
         renderDataLayers(layers, mapState, services, maplibreRef, timeRange, filters, query);
-        renderBaseLayers(layers, maplibreRef);
+        renderBaseLayers(layers, maplibreRef, services);
         // Because of async layer rendering, layers order is not guaranteed, so we need to order layers
         // after all layers are rendered.
         maplibreRef.current!.once('idle', orderLayersAfterRenderLoaded);
@@ -275,7 +275,7 @@ export const MapContainer = ({
           />
         )}
       </div>
-      <div className="maps-error-msg">{<MapsMessages />}</div>
+      {/* <div className="maps-error-msg">{<MapsMessages />}</div>*/}
       <div className="map-container" ref={mapContainer} />
     </div>
   );

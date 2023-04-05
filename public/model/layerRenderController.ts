@@ -24,6 +24,7 @@ import { MapServices } from '../types';
 import { MapState } from './mapState';
 import { GeoBounds, getBounds } from './map/boundary';
 import { buildBBoxFilter, buildGeoShapeFilter } from './geo/filter';
+import { errorFlag } from './OSMLayerFunctions';
 
 interface MaplibreRef {
   current: Maplibre | null;
@@ -158,8 +159,12 @@ export const handleDataLayerRender = (
 
 export const handleBaseLayerRender = (
   layer: MapLayerSpecification,
-  maplibreRef: MaplibreRef
+  maplibreRef: MaplibreRef,
+  services: MapServices
 ): void => {
+  if (errorFlag) {
+    services.toastNotifications.addWarning('An error has occurred when query dataSource');
+  }
   layersFunctionMap[layer.type].render(maplibreRef, layer);
 };
 
@@ -187,10 +192,11 @@ export const renderDataLayers = (
 
 export const renderBaseLayers = (
   layers: MapLayerSpecification[],
-  maplibreRef: MaplibreRef
+  maplibreRef: MaplibreRef,
+  services: MapServices
 ): void => {
   getBaseLayers(layers).forEach((layer) => {
-    handleBaseLayerRender(layer, maplibreRef);
+    handleBaseLayerRender(layer, maplibreRef, services);
   });
 };
 

@@ -49,11 +49,11 @@
 
 .maps-error-msg {
   z-index: 1;
-  position: absolute;
-  top:  $euiSizeXL * 8;
-  right: 20 * $euiSizeXL;
-  //margin-top: $euiSizeS;
-  //bottom: $euiSizeXS;
-  //right: $euiSizeXL * 10;
-  //white-space: break-spaces !important;
+  //position: absolute;
+  //top:  $euiSizeXL * 8;
+  //right: 20 * $euiSizeXL;
+  margin-top: $euiSizeS;
+  bottom: $euiSizeXS;
+  right: $euiSizeXL * 10;
+  white-space: break-spaces !important;
 }

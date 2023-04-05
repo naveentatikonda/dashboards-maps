@@ -9,6 +9,8 @@ import {
   updateOSMStyleLayer,
 } from './map/layer_operations';
 import { getMapLanguage } from '../../common/util';
+import {useOpenSearchDashboards} from "../../../../src/plugins/opensearch_dashboards_react/public";
+import {MapServices} from "../types";
 
 interface MaplibreRef {
   current: Maplibre | null;
@@ -17,7 +19,7 @@ interface MaplibreRef {
 // export interface ConflictErrorMsg {
 //   errorMsg: string | null;
 // }
-export let errorFlag = false;
+export let errorFlag = true;
 
 export const conflictError = (errorMsg: string | null) => {
   return errorMsg;
@@ -31,7 +33,8 @@ const fetchStyleLayers = (url: string) => {
     .catch((error) => {
       // eslint-disable-next-line no-console
       console.log('error', error);
-      errorFlag = true;
+      // toastNotifications.addWarning('An error has occurred when query dataSource');
+      // errorFlag = true;
       // conflictError('OpenSearch Vector Tiles not avavilable in this region');
       // const propsError: ConflictErrorMsg = {
       //   errorMsg: 'OpenSearch Vector Tiles not avavilable in this region',

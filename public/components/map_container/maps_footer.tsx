@@ -11,6 +11,9 @@ import { ConfigSchema } from '../../../common/config';
 import './map_container.scss';
 import { errorFlag } from '../../model/OSMLayerFunctions';
 import { MapsMessages } from './maps_messages';
+// import {useOpenSearchDashboards} from "../../../../../src/plugins/opensearch_dashboards_react/public";
+// import {MapServices} from "../../types";
+// const { services } = useOpenSearchDashboards<MapServices>();
 
 const coordinatesRoundOffDigit = 4;
 interface MapFooterProps {
